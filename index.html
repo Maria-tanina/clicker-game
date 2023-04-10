@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Marvel: online game</title>
+</head>
+
+<body>
+    <audio>
+		<source src="audio/music.mp3">
+	</audio>
+    <div class="app">
+
+        <div class="game" style="display: none;">
+            <div class="game__info">
+                <div class="game__bar">
+                    <img class="logo" src="images/icons/logo.svg" alt="logo">
+                    <div class="username">User</div>
+                    <div>Total score: <span class="score">0</span></div>
+                </div>
+                <ul class="game__list">
+                    <li class="game__item level level--active">
+                        <img class="level__image" src="images/heroes/hulk-face.png" alt="hulk">
+                        <div class="level__details">
+                            <div class="level__title">Hulk</div>
+                            <div class="level__info">
+                                <div class="level__num">Level 1</div>
+                                <div class="level__hp">10 HP</div>
+                            </div>
+                            <div class="level__health"></div>
+                        </div>
+                    </li>
+                    <li class="game__item level locked">
+                        <img class="level__image" src="images/heroes/captain-face.png" alt="hulk">
+                        <div class="level__details">
+                            <div class="level__title">Captain America</div>
+                            <div class="level__info">
+                                <div class="level__num">Level 2</div>
+                                <div class="level__hp">15 HP</div>
+                            </div>
+                            <div class="level__health"></div>
+                        </div>
+                    </li>
+                    <li class="game__item level locked">
+                        <img class="level__image" src="images/heroes/ironman-face.png" alt="hulk">
+                        <div class="level__details">
+                            <div class="level__title">Ironman</div>
+                            <div class="level__info">
+                                <div class="level__num">Level 3</div>
+                                <div class="level__hp">20 HP</div>
+                            </div>
+                            <div class="level__health"></div>
+                        </div>
+                    </li>
+                    <li class="game__item level locked">
+                        <img class="level__image" src="images/heroes/spiderman-face.png" alt="hulk">
+                        <div class="level__details">
+                            <div class="level__title">Spiderman</div>
+                            <div class="level__info">
+                                <div class="level__num">Level 4</div>
+                                <div class="level__hp">25 HP</div>
+                            </div>
+                            <div class="level__health"></div>
+                        </div>
+                    </li>
+                    <li class="game__item level locked">
+                        <img class="level__image" src="images/heroes/venom-face.png" alt="hulk">
+                        <div class="level__details">
+                            <div class="level__title">Venom</div>
+                            <div class="level__info">
+                                <div class="level__num">Level 5</div>
+                                <div class="level__hp">30 HP</div>
+                            </div>
+                            <div class="level__health"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="game__content hero">
+                <div class="hero__health">
+                    <div class="hero__avatar">
+                        <img class="hero__face" src="images/heroes/hulk-face.png" alt="hero face">
+                    </div>
+                    <div class="hero__box">
+                        <div class="hero__lifeline"><span class="damage"></span></div>
+                        <div class="hero__info">
+                            <div class="level__title current__hero">Hulk</div>
+                            <span class="space">-</span>
+                            <div class="current__level">Level 1</div>
+                            <span class="current__score">0</span>
+                            <span>/</span>
+                            <span class="total__score">10</span>
+                        </div>
+                    </div>
+                    <div class="sound">
+                        <img src="images/icons/mute_sound.png">
+                    </div>
+                </div>
+                <img class="finish__gif" src="images/finishHim.gif" alt="finish him">
+                <img class="hero__image" src="images/heroes/hulk.png" alt="hero">
+
+            </div>
+        </div>
+        <div class="modal hide">
+            <div class="modal__dialog">
+                <div class="modal__content">
+                    <form class="modal__form" action="#">
+                        <div class="modal__title">Are you ready? Create account!</div>
+                        <img class="modal__image" src="images/icons/heroes.png" alt="heroes">
+                        <label class="modal__label" for="nickname">Nickname</label>
+                        <input required id="nickname" placeholder="Enter your nickname" name="nickname" type="text"
+                            class="modal__input nickname">
+
+                        <label class="modal__label" for="name">Name</label>
+                        <input required id="name" placeholder="Enter your name" name="name" type="text"
+                            class="modal__input name">
+
+                        <label class="modal__label" for="email">Email</label>
+                        <input required id="email" placeholder="Enter your email" name="name" type="email"
+                            class="modal__input email">
+                        <button class="modal__btn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            START
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal__congratulation hide">
+            <div class="modal__dialog">
+                <div class="modal__content">
+                    <img class="modal__image" src="images/icons/xp.png" alt="cup">
+                    <div class="modal__title">Great work!</div>
+                    <p class="modal__text">You have defeated the hero and unlocked the next level.</p>
+                    <button class="modal__btn next__btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Next level
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="modal__endgame hide">
+            <div class="modal__dialog">
+                <div class="modal__content">
+                    <img class="modal__image" src="images/icons/champion.png" alt="marvel pic">
+                    <div class="modal__title">Victory!</div>
+                    <p class="modal__text">Your score: <span class="finalscore"></span></p>
+                    <p class="modal__text">You win all characters.</p>
+                    <button class="modal__btn restart__btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Restart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
