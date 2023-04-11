@@ -1,3 +1,4 @@
+//Render heroes list(levels)
 export function renderHeroes(heroes, parentElement) {
         const items =  heroes.map(({name, face, hp}, i) => {
         let className = i ? 'locked' : 'level--active';
