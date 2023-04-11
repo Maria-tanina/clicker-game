@@ -33,7 +33,5 @@ export const heroes = [
         background: 'images/areas/venom.jpg',
         face: 'images/heroes/venom-face.png',
         hp: 30
-    },
-
-
+    }
 ]
