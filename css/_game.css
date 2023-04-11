@@ -17,7 +17,7 @@
 }
 
 .game {
-    background-image: url(../images/area1.jpg);
+    background-image: url(../images/areas/hulk.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
