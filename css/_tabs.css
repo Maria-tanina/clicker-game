@@ -1,0 +1,32 @@
+.tabheader{
+  border-radius: 8px 8px 0 0;
+  background: rgba(217, 217, 217, 0.78);
+}
+.tabheader__items {
+  display: flex;
+  overflow: hidden;
+}
+.tabheader__item {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 25px;
+  border: 1px solid #ddd;
+  border-bottom: 0;
+  background:  #eeeeee;
+  color: #444;
+  outline: none;
+}
+.tabheader__item:hover {
+  background-color: #dddddd;
+}
+.tabheader__item_active {
+  background: #ffffff;
+}
+.tabheader__item:first-child {
+  border-radius: 8px 0 0 0;
+}
+.tabheader__item:last-child {
+  border-radius: 0 8px 0 0;
+}
+  

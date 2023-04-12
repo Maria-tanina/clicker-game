@@ -9,7 +9,7 @@ export function renderHero(hero, parentElement, level) {
                     <div class="hero__box">
                         <div class="hero__lifeline"><span class="damage"></span></div>
                         <div class="hero__info">
-                            <div class="level__title current__hero">${name}</div>
+                            <div class="level__title current__hero">${name.length > 9 ? name.slice(0, 8) + "..." : name}</div>
                             <span class="space">-</span>
                             <div class="current__level">Level ${level}</div>
                             <span class="current__score">0</span>

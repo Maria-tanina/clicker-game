@@ -11,8 +11,8 @@
 
 <body>
     <audio>
-		<source src="audio/music.mp3">
-	</audio>
+        <source src="audio/music.mp3">
+    </audio>
     <div class="app">
 
         <div class="game" style="display: none;">
@@ -25,12 +25,22 @@
                         <img class="sound__img" src="images/icons/mute_sound.png">
                     </div>
                 </div>
-                <ul class="game__list">
-                    
-                </ul>
+                <div class="tabheader">
+                    <div class="tabheader__items">
+                        <button class="tabheader__item" data-name="heroes">Heroes</button>
+                        <button class="tabheader__item" data-name="achivements">Achivements</button>
+                        <button class="tabheader__item" data-name="inventory">Inventory</button>
+                    </div>
+                </div>
+                <div class="game__list">
+                    <ul id="heroes" class="heroes__list tabcontent"></ul>
+                    <div id="achivements" class="achivements tabcontent">
+                       
+                    </div>
+                    <div id="inventory" class="inventory tabcontent"></div>
+                </div>
             </div>
             <div class="game__content hero">
-
             </div>
         </div>
         <div class="modal hide">
@@ -62,7 +72,7 @@
             </div>
         </div>
 
-        <div class="modal__congratulation hide">
+        <div class="modal__congratulation hide fade">
             <div class="modal__dialog">
                 <div class="modal__content">
                     <img class="modal__image" src="images/icons/xp.png" alt="cup">
@@ -78,7 +88,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal__endgame hide">
+        <div class="modal__endgame hide fade">
             <div class="modal__dialog">
                 <div class="modal__content">
                     <img class="modal__image" src="images/icons/champion.png" alt="marvel pic">
@@ -94,6 +104,18 @@
                     </button>
                 </div>
             </div>
+        </div>
+        <div class="modal__achievement award hide fade">
+            <div class="close"></div>
+            <div class="award__box">
+                <img class="award__image" src="images/achieve.png" alt="achieve">
+                <div class="award__info">
+                    <p class="award__text">Hooray! You open a new achievement!</p>
+                </div>
+            </div>
+        </div>
+        <div class="items">
+           
         </div>
 
     </div>

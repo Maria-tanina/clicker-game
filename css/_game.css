@@ -23,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     padding: 30px 70px;
-    min-height: 100vh;
+   height: 100vh;
   }
   
   .game__info {
@@ -42,7 +42,7 @@
   .game__list {
     background: rgba(217, 217, 217, 0.78);
     padding: 40px 50px;
-    height: 500px;
+    height: 450px;
     overflow-y: scroll;
   }
   .game__list::-webkit-scrollbar {
@@ -53,7 +53,7 @@
   }
   
   /* Цвет дорожки, по которой двигается бегунок прокрутки. */
-  .game__list::-webkit-scrollbar-track {
+  .hame__list::-webkit-scrollbar-track {
     background-color: #ecedee
   }
   
@@ -162,7 +162,9 @@
   }
   
   
-  
+  .hero {
+    position: relative;
+  }
   .hero__health {
     display: flex;
     align-items: center;
