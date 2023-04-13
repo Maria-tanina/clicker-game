@@ -12,7 +12,7 @@ function getRandomValue(min, max) {
 /* Creating an inventory item */
 export function createItem(level, time) {
     items.innerHTML = "";
-    let random = getRandomValue(2000, 6000);
+    let random = getRandomValue(2000, 4000);
     let item = document.createElement("img");
     item.classList.add('inventory__item');
     item.setAttribute("src", inventoryList[level-1].image);
@@ -27,11 +27,13 @@ export function createItem(level, time) {
 function fallItem(item, time, level) {
     let intID = setInterval(() => {
         item.style.top = item.offsetTop + 15 + 'px';
+        //If the player did not catch the item
         if (item.offsetTop + 150 > window.outerHeight || document.querySelector('.modal__congratulation').classList.contains('show') || document.querySelector('.modal__endgame').classList.contains('show')) {  //If the item is not caught
             item.remove();
             clearInterval(intID);
         }
     }, time);
+    //If the player catch the item
     item.addEventListener('click', () => {
         item.remove();
         clearInterval(intID);

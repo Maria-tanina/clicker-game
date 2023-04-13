@@ -6,7 +6,7 @@ import { changeActiveLevel } from "./modules/changeActiveLevel.js";
 import { hideTabContent, showTabContent } from "./modules/tabs.js";
 import { createItem } from "./modules/addInventory.js";
 import { switchLevel } from "./modules/switchLevel.js";
-import { showError, showSuccess, checkEmail, checkNickname, checkUsername } from "./modules/validateForm.js";
+import { checkEmail, checkNickname, checkUsername } from "./modules/validateForm.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
