@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('name', name.value);
         localStorage.setItem('email', email.value);
         username.textContent = localStorage.getItem('nickname');
+        createItem(levelCounter, 100);
     }
 
     //Setup start content depending on whether the user is registered or not

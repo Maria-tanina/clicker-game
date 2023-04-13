@@ -35,8 +35,6 @@ body {
   @keyframes damage-animate{
     from{box-shadow: none}to{box-shadow: 0 0 5px #f40303, 0 0 1px #f40303, 0 0 5px #f40303, 0 0 30px #f40303;}
   }
-
-
   
   .click-animate{
     animation-name: click-animate;animation-duration: 0.3s;
