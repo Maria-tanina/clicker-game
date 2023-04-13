@@ -19,6 +19,9 @@ export function addAchieve(selector) {
     `
     parentElement.insertAdjacentHTML('beforeend', achieve);
     openModal(modalAchievement);
+    if(!document.querySelector('[data-name = "achivements"]').classList.contains('tabheader__item_active')) {
+        document.querySelector('[data-name = "achivements"]').classList.add('tabheader__item_new');
+    }
     
     //Close modal after 10 seconds
    let timer = setInterval(() => {

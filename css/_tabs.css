@@ -7,6 +7,7 @@
   overflow: hidden;
 }
 .tabheader__item {
+  position: relative;
   flex: 1;
   border: none;
   background: transparent;
@@ -22,6 +23,18 @@
 }
 .tabheader__item_active {
   background: #ffffff;
+}
+.tabheader__item_new::after {
+  content: '';
+  position: absolute;
+  background-image: url(../images/icons/new.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 13px;
+  right: 10px;
+  top: 3px;
+  border-radius: 5px;
 }
 .tabheader__item:first-child {
   border-radius: 8px 0 0 0;

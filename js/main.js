@@ -4,10 +4,11 @@ import { renderHeroes } from "./modules/renderHeroes.js";
 import { closeModal, openModal } from "./modules/modal.js";
 import { changeActiveLevel } from "./modules/changeActiveLevel.js";
 import { hideTabContent, showTabContent } from "./modules/tabs.js";
-import { addAchieve } from "./modules/addAchieves.js";
 import { createItem } from "./modules/addInventory.js";
+import { switchLevel } from "./modules/switchLevel.js";
 
 document.addEventListener('DOMContentLoaded', () => {
+
      // Get elements from DOM
     const   modal = document.querySelector('.modal'), //register form modal
             modalform = document.querySelector('.modal__form'),
@@ -21,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
             game = document.querySelector('.game'), //Game wrapper
             counter = document.querySelector('.score'),  
             heroesList = document.querySelector('.heroes__list'),
-            finishModal = document.querySelector('.modal__endgame'),  //endgame modal
             heroWrapper = document.querySelector('.hero'),
             modalAchievement = document.querySelector('.modal__achievement');
             
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //Click on hero
         if(target.classList.contains('hero__image')) {
             addScore();
-            switchLevel();
+            switchLevel(total);
         }
         //Turn on/off the music
         if(target.classList.contains('sound__img')) {
@@ -49,41 +49,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if(target.classList.contains('next__btn')) {
             upgradeLevel();
         }
+
         if(target.classList.contains('close')) {
             closeModal(modalAchievement);
         }
+        //Trigger for apply inventory
         if(target.classList.contains('inventory__btn')) {
-            const dataset = +target.dataset.hp;
-            if(currentHero.hp - score < dataset) {
-                total += currentHero.hp - score
-                score = currentHero.hp;
-            } else {
-                total += dataset;
-                score+= dataset;
-            }
-            document.querySelector('.current__score').textContent = score;
-            counter.textContent = total;
-            damage.style.width = damage.offsetWidth + (405*dataset/currentHero.hp) + 'px';
-            if(currentHero.hp - score < 4) {
-                finishGif.style.opacity = 1;
-            }
-            target.closest('.inventory__card').remove();
-            switchLevel()
+            applyInventory(target);
         }
         //Trigger for tabs
         if(target.classList.contains('tabheader__item')) {
-            tabs.forEach((item, i) => {
-                if (target == item) {
-                    hideTabContent(tabs, tabsContent);
-                    showTabContent(i, tabs, tabsContent);
-                }
-            });
+            switchTabs(target)
         }
         //Trigger for restart game
         if(target.classList.contains('restart__btn')) {
             restart();
         }
     })
+
+
 
     function toggleSound() {
         if (sound == 'on') {
@@ -96,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
             player.play();
         }
     }
-
 
     //Start the game after form submission
     const startGame = (e) => {
@@ -128,55 +111,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
     }
-
-    //Switching levels
-    function switchLevel() {
-        switch(total) { 
-            case 10: 
-            heroIsDefeated();
-            addAchieve('firstlevel');
-                break;
-            case 25: 
-            heroIsDefeated();
-                break;
-            case 45: 
-            heroIsDefeated();
-                break;
-            case 50:
-                addAchieve('first50');
-                break;
-            case 70: 
-            heroIsDefeated();
-                break;
-            case 100:
-                endGame();
-                break;
-        }
-
-    }
-
+  
+    let damage = document.querySelector('.damage'),  //damage line
+        finishGif = document.querySelector('.finish__gif'), 
+        level = document.querySelectorAll('.level');
 
     //Add points on each click
-    let damage = document.querySelector('.damage'),
-        finishGif = document.querySelector('.finish__gif');
-    const level = document.querySelectorAll('.level');
-
     function addScore() {
         total += 1;
         score+=1;
         document.querySelector('.current__score').textContent = score;
+        document.querySelector('.hero__image').classList.remove('click-animate');
         damage.style.width = damage.offsetWidth + (405/currentHero.hp) + 'px';
         counter.textContent = total;
         if(currentHero.hp - score < 4) {
             finishGif.style.opacity = 1;
+            //add animation to hero
+            document.querySelector('.hero__image').classList.add('click-animate');
         }
     }
-
-    function heroIsDefeated() {
-        openModal(congratModal);
-        finishGif.style.opacity = 0;
-    }
-
 
     //Change level content
     function upgradeLevel() {
@@ -185,23 +138,49 @@ document.addEventListener('DOMContentLoaded', () => {
         currentHero = heroes[levelCounter-1];
         renderHero(currentHero, heroWrapper, levelCounter);
         game.style.backgroundImage = `url(${currentHero.theme})`;
-
         damage = document.querySelector('.damage');
         finishGif = document.querySelector('.finish__gif');
-
         changeActiveLevel(level, levelCounter-1);
         closeModal(congratModal);
+
+        //Inventory item creation
         createItem(levelCounter, 100);
     }
 
-
-    //User has won
-    function endGame() {
-        finishGif.style.opacity = 0;
-        document.querySelector('.finalscore').textContent = total;
-        openModal(finishModal);
+    //Using the inventory that the player has caught
+    function applyInventory(target) {
+        const lifeLine = document.querySelector('.hero__lifeline');
+        lifeLine.classList.remove('damage-animate');
+        const dataset = +target.dataset.hp;
+        if(currentHero.hp - score < dataset ) {
+            total += currentHero.hp - score
+            score = currentHero.hp;
+        } else {
+            total += dataset;
+            score+= dataset;
+        }
+        document.querySelector('.current__score').textContent = score;
+        counter.textContent = total;
+        damage.style.width = damage.offsetWidth + (405*dataset/currentHero.hp) + 'px';
+        if(currentHero.hp - score < 4) {
+            finishGif.style.opacity = 1;
+        }
+        target.closest('.inventory__card').remove();
+        lifeLine.classList.add('damage-animate');
+        switchLevel(total)
     }
 
+    //Switching tabulation content(heroes/achievements/inventory)
+    function switchTabs(target) {
+        tabs.forEach((item, i) => {
+            if (target == item) {
+                hideTabContent(tabs, tabsContent);
+                showTabContent(i, tabs, tabsContent);
+                target.classList.remove('tabheader__item_new');
+            }
+        });
+    }
+    //Restart the game
     function restart() {
         location.reload();
     } 

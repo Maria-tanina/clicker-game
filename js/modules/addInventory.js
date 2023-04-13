@@ -9,15 +9,14 @@ function getRandomValue(min, max) {
 };
 
 
-/* создание предмета */
+/* Creating an inventory item */
 export function createItem(level, time) {
     items.innerHTML = "";
-    let random = getRandomValue(3000, 6000);
+    let random = getRandomValue(2000, 6000);
     let item = document.createElement("img");
     item.classList.add('inventory__item');
     item.setAttribute("src", inventoryList[level-1].image);
     items.appendChild(item);
-   
     item.style.top = "-90px";
     item.style.left = getRandomValue(214, window.innerWidth - 115) + "px";
      setTimeout(() => fallItem(item,time, level), random)
@@ -28,8 +27,7 @@ export function createItem(level, time) {
 function fallItem(item, time, level) {
     let intID = setInterval(() => {
         item.style.top = item.offsetTop + 15 + 'px';
-
-        if (item.offsetTop > window.outerHeight) {      // если не впоймал
+        if (item.offsetTop + 150 > window.outerHeight || document.querySelector('.modal__congratulation').classList.contains('show') || document.querySelector('.modal__endgame').classList.contains('show')) {  //If the item is not caught
             item.remove();
             clearInterval(intID);
         }
@@ -37,7 +35,7 @@ function fallItem(item, time, level) {
     item.addEventListener('click', () => {
         item.remove();
         clearInterval(intID);
-        catchItem(level)
+        catchItem(level);
     })
 }
 
@@ -55,6 +53,10 @@ function catchItem(level) {
         </div>
     `
     inventory.insertAdjacentHTML('beforeend', item);
+    if(!document.querySelector('[data-name = "inventory"]').classList.contains('tabheader__item_active')) {
+        document.querySelector('[data-name = "inventory"]').classList.add('tabheader__item_new');
+    }
+
  
 
 }

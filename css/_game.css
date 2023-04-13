@@ -15,7 +15,6 @@
 .header__item:not(:last-child){
     margin-right: 50px;
 }
-
 .game {
     background-image: url(../images/areas/hulk.jpg);
     background-repeat: no-repeat;
@@ -24,6 +23,7 @@
     justify-content: space-between;
     padding: 30px 70px;
    height: 100vh;
+   user-select: none;
   }
   
   .game__info {
