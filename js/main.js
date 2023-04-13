@@ -6,6 +6,7 @@ import { changeActiveLevel } from "./modules/changeActiveLevel.js";
 import { hideTabContent, showTabContent } from "./modules/tabs.js";
 import { createItem } from "./modules/addInventory.js";
 import { switchLevel } from "./modules/switchLevel.js";
+import { showError, showSuccess, checkEmail, checkNickname, checkUsername } from "./modules/validateForm.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -68,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
-
     function toggleSound() {
         if (sound == 'on') {
             soundBtn.src = 'images/icons/mute_sound.png';
@@ -81,16 +81,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
     //Start the game after form submission
     const startGame = (e) => {
+
         e.preventDefault();
-        game.style.display = '';
-        closeModal(modal);
-        localStorage.setItem('nickname', nickname.value);
-        localStorage.setItem('name', name.value);
-        localStorage.setItem('email', email.value);
-        username.textContent = localStorage.getItem('nickname');
-        createItem(levelCounter, 100);
+        // validate forms
+        let isUsernameValid = checkUsername(name),
+            isEmailValid = checkEmail(email),
+            isNicknameValid = checkNickname(nickname);
+    
+        let isFormValid = isUsernameValid &&
+            isEmailValid && isNicknameValid;
+            switch (e.target.id) {
+                case 'nickname':
+                    checkNickname();
+                    break;
+                case 'email':
+                    checkEmail();
+                    break;
+                case 'name': 
+                    checkUsername()
+            }
+        // submit to the server if the form is valid
+        if (isFormValid) {
+            game.style.display = '';
+            closeModal(modal);
+            localStorage.setItem('nickname', nickname.value);
+            localStorage.setItem('name', name.value);
+            localStorage.setItem('email', email.value);
+            username.textContent = localStorage.getItem('nickname');
+            createItem(levelCounter, 100);
+        }
     }
 
     //Setup start content depending on whether the user is registered or not

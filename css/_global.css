@@ -15,7 +15,16 @@ body {
       padding: 0 20px;
       margin: 0 auto;
   }
-
+  .error {
+    box-shadow: 0 4px 15px rgba(244, 5, 5, 0.37) !important;
+  }
+  .success {
+    box-shadow: 0 4px 15px rgba(116, 244, 5, 0.612) !important;
+  }
+  small {
+    font-size: 16px;
+    color: #f40303;
+  }
   .show{
     display:block;
   }

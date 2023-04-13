@@ -39,7 +39,7 @@
   .modal__content{
     position:relative;
     width:100%;
-    padding:40px;
+    padding:30px 40px;
     background-color:#fff;
     border:1px solid rgba(0,0,0,.2);
     border-radius:4px;
@@ -68,16 +68,17 @@
     user-select: none;
   }
   .modal__image{
-    width: 170px;
-    margin: 0 auto 20px;
+    width: 150px;
+    margin: 0 auto 10px;
     user-select: none;
   }
   .modal__label {
     font-size: 18px;
+    margin-top: 15px;
   }
   .modal__input{
     display:block;
-    margin:5px auto 15px auto;
+    margin:5px auto 5px auto;
     width: 100%;
     height:45px;
     background:#E6ECF0;
