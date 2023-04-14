@@ -1,15 +1,21 @@
 .achivements__item, .inventory__card {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-bottom: 15px;
     background: rgba(255, 255, 255, 0.78);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 10px 25px;
 }
 .achivements__image, .inventory__item  {
     width: 80px;
     margin-right: 20px;
-    object-fit: contain;
+    -o-object-fit: contain;
+       object-fit: contain;
 }
 .achivements__title, .inventory__title  {
     font-size: 20px;
@@ -26,5 +32,4 @@
     font-size: 16px;
     line-height: 17px;
 }
-
 

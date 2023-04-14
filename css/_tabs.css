@@ -3,12 +3,16 @@
   background: rgba(217, 217, 217, 0.78);
 }
 .tabheader__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
 }
 .tabheader__item {
   position: relative;
-  flex: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   border: none;
   background: transparent;
   padding: 10px 25px;

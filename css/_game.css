@@ -1,249 +1,297 @@
-
-/* game */
 .header {
-    background: #232222;
+  background: #232222;
 }
 .header__inner {
-    display: flex;
-    align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .header__logo {
-    width: 133px;
-    height: 100px;
-    margin-left: auto;
+  width: 133px;
+  height: 100px;
+  margin-left: auto;
 }
 .header__item:not(:last-child){
-    margin-right: 50px;
+  margin-right: 50px;
 }
 .game {
-    background-image: url(../images/areas/hulk.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: space-between;
-    padding: 30px 70px;
-   height: 100vh;
-   user-select: none;
-  }
-  
-  .game__info {
-    width: 45%;
-    min-width: 400px;
-  }
-  .game__bar {
-    margin-bottom: 30px;
-    background: rgba(217, 217, 217, 0.78);
-    border-radius: 34px;
-    padding: 0px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .game__list {
-    background: rgba(217, 217, 217, 0.78);
-    padding: 40px 50px;
-    height: 450px;
-    overflow-y: scroll;
-  }
-  .game__list::-webkit-scrollbar {
-    width: 7px;
-    background-color: rgba(26, 24, 47, 0.15);
-    border-radius: 5px;
-    height: 90%;
-  }
-  
-  /* Цвет дорожки, по которой двигается бегунок прокрутки. */
-  .hame__list::-webkit-scrollbar-track {
-    background-color: #ecedee
-  }
-  
-  /* Цвет бегунка полосы, а так же его закругление. */
-  .game__list::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-    background: rgba(171, 171, 171, 0.78);
-  }
-  
-  /* Цвет бегунка при наведении на него курсора. */
-  .game__list::-webkit-scrollbar-thumb:hover {
-    background: rgba(171, 171, 171, 0.78);
-  }
-  
-  /* Основная ширина полосы прокрутки. */
-  .game__list::-webkit-resizer {
-    width: 4px;
-    height: 0px
-  }
-  .game__list::-webkit-scrollbar {
-    width: 4px;
-  }
-  .level {
-    margin-bottom: 15px;
-    background: rgba(255, 255, 255, 0.78);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 34px;
-    display: flex;
-    padding: 10px 25px;
-  }
-  .level--active {
-    position: relative;
-   box-shadow: 0 0 5px #03e9f4, 0 0 1px #03e9f4, 0 0 5px #03e9f4, 0 0 30px #03e9f4;
-  }
-  .level--active::after {
-    position: absolute;
-    content: '';
-    width: 50px;
-    height: 80px;
-    background-image: url(../images/icons/sword.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    right: 30px;
-    top: 10px;
+  background-image: url(../images/areas/hulk.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 30px 70px;
+ height: 100vh;
+ -webkit-user-select: none;
+    -moz-user-select: none;
+     -ms-user-select: none;
+         user-select: none;
+}
 
-  }
-  .locked {
-    position: relative;
-  }
-  .locked::after {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(40, 40, 40, 0.79);
-    border-radius: 34px;
-    z-index: 20;
-  }
-  .locked::before {
-    position: absolute;
-    content: '';
-    background-image: url('../images/icons/lock.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 50px;
-    height: 70px;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 30;
-  }
-  .level__image {
-    margin-right: 30px;
-    width: 75px;
-    height: 75px;
-    object-fit: contain;
-  }
-  .level__details {
-    width: 260px;
-  }
-  .level__title {
-    font-weight: 700;
-    font-size: 25px;
-    text-transform: uppercase;
-  }
-  .level__info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .level__num, .level__hp {
-    font-size: 20px;
-    font-weight: 500;
-  }
-  .level__health {
-    background: #39FF08;
-    height: 20px;
-    width: 100%;
-  }
-  .level__status {
-    margin-left: auto;
-    height: 80px;
-  }
-  
-  
-  .hero {
-    position: relative;
-  }
-  .hero__health {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  .hero__avatar {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    background: #D9D9D9;
-    border: 4px solid #000000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-    margin-right: -40px;
-  }
-  .hero__avatar img {
-    width: 90px;
-    object-fit: contain;
-  }
-  .hero__lifeline {
-    position: relative;
-    background: #5AD100;
-    border: 4px solid #000000;
-    border-radius: 15px;
-    width: 425px;
-    height: 50px;
-    margin-top: 10px;
-  }
-  .damage {
-    position: absolute;
-    content: '';
-    background-color: #f70f0f;
-    border-radius:0 10px 10px 0;
-    right: 0;
-    height: 100%;
-    width: 0%;
-  
-  }
-  .hero__info {
-    background: #D9D2F2;
-    border: 4px solid #000000;
-    border-radius: 10px;
-    width: 380px;
-    height: 35px;
-    transform: translateY(-4px);
-    display: flex;
-    align-items: center;
-    padding-left: 50px;
-  }
-  .space {
-    padding: 0 10px;
-  }
-  
-  .hero__image {
-    width: 300px;
-    max-height: 440px;
-    margin: 0 auto;
-    object-fit:contain;
-  }
-  
-  .current__score {
-    margin-left: 20px;
-    font-size: 20px;
-  
-  }
-  .total__score, .current__level {
-    font-size: 20px;
-  }
+.game__info {
+  width: 45%;
+  min-width: 400px;
+}
+.game__bar {
+  margin-bottom: 30px;
+  background: rgba(217, 217, 217, 0.78);
+  border-radius: 34px;
+  padding: 0px 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.game__list {
+  background: rgba(217, 217, 217, 0.78);
+  padding: 40px 50px;
+  height: 450px;
+  overflow-y: scroll;
+}
+.game__list::-webkit-scrollbar {
+  width: 7px;
+  background-color: rgba(26, 24, 47, 0.15);
+  border-radius: 5px;
+  height: 90%;
+}
 
-  .finish__gif {
-    opacity: 0;
-    width: 230px;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    user-select: none;
-  }
-  .sound {
-    width: 50px;
-    margin-left: 15px;
-  }
+/* Цвет дорожки, по которой двигается бегунок прокрутки. */
+.hame__list::-webkit-scrollbar-track {
+  background-color: #ecedee
+}
+
+/* Цвет бегунка полосы, а так же его закругление. */
+.game__list::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  background: rgba(171, 171, 171, 0.78);
+}
+
+/* Цвет бегунка при наведении на него курсора. */
+.game__list::-webkit-scrollbar-thumb:hover {
+  background: rgba(171, 171, 171, 0.78);
+}
+
+/* Основная ширина полосы прокрутки. */
+.game__list::-webkit-resizer {
+  width: 4px;
+  height: 0px
+}
+.game__list::-webkit-scrollbar {
+  width: 4px;
+}
+.level {
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.78);
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 34px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 25px;
+}
+.level--active {
+  position: relative;
+ -webkit-box-shadow: 0 0 5px #03e9f4, 0 0 1px #03e9f4, 0 0 5px #03e9f4, 0 0 30px #03e9f4;
+         box-shadow: 0 0 5px #03e9f4, 0 0 1px #03e9f4, 0 0 5px #03e9f4, 0 0 30px #03e9f4;
+}
+.level--active::after {
+  position: absolute;
+  content: '';
+  width: 50px;
+  height: 80px;
+  background-image: url(../images/icons/sword.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  right: 30px;
+  top: 10px;
+
+}
+.locked {
+  position: relative;
+}
+.locked::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(40, 40, 40, 0.79);
+  border-radius: 34px;
+  z-index: 20;
+}
+.locked::before {
+  position: absolute;
+  content: '';
+  background-image: url('../images/icons/lock.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 70px;
+  right: 20px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 30;
+}
+.level__image {
+  margin-right: 30px;
+  width: 75px;
+  height: 75px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.level__details {
+  width: 260px;
+}
+.level__title {
+  font-weight: 700;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.level__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.level__num, .level__hp {
+  font-size: 20px;
+  font-weight: 500;
+}
+.level__health {
+  background: #39FF08;
+  height: 20px;
+  width: 100%;
+}
+.level__status {
+  margin-left: auto;
+  height: 80px;
+}
+
+
+.hero {
+  position: relative;
+}
+.hero__health {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+}
+.hero__avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: #D9D9D9;
+  border: 4px solid #000000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 10;
+  margin-right: -40px;
+}
+.hero__avatar img {
+  width: 90px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.hero__lifeline {
+  position: relative;
+  background: #5AD100;
+  border: 4px solid #000000;
+  border-radius: 15px;
+  width: 425px;
+  height: 50px;
+  margin-top: 10px;
+}
+.damage {
+  position: absolute;
+  content: '';
+  background-color: #f70f0f;
+  border-radius:0 10px 10px 0;
+  right: 0;
+  height: 100%;
+  width: 0%;
+
+}
+.hero__info {
+  background: #D9D2F2;
+  border: 4px solid #000000;
+  border-radius: 10px;
+  width: 380px;
+  height: 35px;
+  -webkit-transform: translateY(-4px);
+      -ms-transform: translateY(-4px);
+          transform: translateY(-4px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 50px;
+}
+.space {
+  padding: 0 10px;
+}
+
+.hero__image {
+  width: 300px;
+  max-height: 440px;
+  margin: 0 auto;
+  -o-object-fit:contain;
+     object-fit:contain;
+}
+
+.current__score {
+  margin-left: 20px;
+  font-size: 20px;
+
+}
+.total__score, .current__level {
+  font-size: 20px;
+}
+
+.finish__gif {
+  opacity: 0;
+  width: 230px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.sound {
+  width: 50px;
+  margin-left: 15px;
+}
