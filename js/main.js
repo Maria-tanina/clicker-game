@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('nickname', nickname.value);
             localStorage.setItem('name', name.value);
             localStorage.setItem('email', email.value);
+            localStorage.setItem('MarvelRegistered', true);
             username.textContent = localStorage.getItem('nickname');
             createItem(levelCounter, 100);
         }
@@ -123,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hideTabContent(tabs, tabsContent);
         showTabContent(0, tabs, tabsContent);
         modalform.addEventListener('submit', startGame);
-        if(localStorage.getItem('email')) {
+        if(localStorage.getItem('MarvelRegistered')) {
             game.style.display = '';
             //Save username if user reloads the page
             username.textContent = localStorage.getItem('nickname');
