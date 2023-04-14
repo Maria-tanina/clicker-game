@@ -4,15 +4,19 @@
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     };
-
+    const isBetween = (length, min, max) => length < min || length > max ? false : true;
    export const checkNickname = (nickname) => {
 
         let valid = false;
+        const min = 3,
+        max = 10;
         const username = nickname.value.trim();
     
         if (!isRequired(username)) {
             showError(nickname, 'Nickname cannot be blank.');
-        }  else {
+        } else if (!isBetween(username.length, min, max)) {
+            showError(nickname, `Username must be between ${min} and ${max} characters.`)
+        } else {
             showSuccess(nickname);
             valid = true;
         }
